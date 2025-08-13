@@ -1,0 +1,4 @@
+Line 1: This is a large file example.
+Line 2: Let's make this file larger by repeating some text.
+Line 3: This file will be used for testing large file reading in chunks.
+...
