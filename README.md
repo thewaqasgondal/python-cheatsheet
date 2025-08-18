@@ -10,7 +10,7 @@ A collection of useful Python code snippets, tips, and tricks for beginners and 
 Clone this repository to explore a wide range of Python examples and learn how to implement them.
 
 ```bash
-git clone https://github.com/your-username/python-cheatsheet.git
+git clone https://github.com/thewaqasgondal/python-cheatsheet.git
 cd python-cheatsheet
 ````
 
