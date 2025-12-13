@@ -1,0 +1,21 @@
+# OCR Dependencies
+pytesseract>=0.3.10
+Pillow>=10.0.0
+
+# Data Processing
+pandas>=2.0.0
+
+# YouTube and Audio Processing
+yt-dlp>=2023.0.0
+pydub>=0.25.1
+SpeechRecognition>=3.10.0
+
+# Natural Language Processing
+nltk>=3.8.0
+transformers>=4.30.0
+
+# Machine Learning
+tensorflow>=2.13.0
+
+# Additional Utilities
+numpy>=1.24.0
