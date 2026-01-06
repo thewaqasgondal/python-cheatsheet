@@ -9,29 +9,51 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest
 
-    - name: Run basic syntax check
+    - name: Install Tesseract for OCR tests
       run: |
-        python -m py_compile concurrency/threading_intro.py
-        python -m py_compile concurrency/multiprocessing_intro.py
-        python -m py_compile file_operations/file_analysis.py
-        python -m py_compile file_operations/os_example.py
-        python -m py_compile tensorflow_examples/tf.py
+        sudo apt-get update
+        sudo apt-get install -y tesseract-ocr
 
-    - name: Test basic imports
+    - name: Run basic tests
       run: |
-        python -c "import os, sys, json, csv; print('Basic imports successful')"
-        python -c "import tensorflow as tf; print(f'TensorFlow version: {tf.__version__}')"
+        python tests/test_basic.py
+
+    - name: Run syntax checks on all Python files
+      run: |
+        python -m py_compile basic_concepts/*.py
+        python -m py_compile concurrency/*.py
+        python -m py_compile file_operations/*.py
+        python -m py_compile ocr_examples/*.py
+        python -m py_compile nlp_examples/my_nltk/*.py
+        python -m py_compile tensorflow_examples/*.py
+
+    - name: Test key imports
+      run: |
+        python -c "import basic_concepts.data_structures; print('✓ data_structures import OK')"
+        python -c "import basic_concepts.decorators; print('✓ decorators import OK')"
+        python -c "import basic_concepts.generators; print('✓ generators import OK')"
+        python -c "import concurrency.threading_intro; print('✓ threading import OK')"
+        python -c "import file_operations.file_analysis; print('✓ file_analysis import OK')"
+        python -c "import tensorflow as tf; print(f'✓ TensorFlow {tf.__version__} import OK')"
+
+    - name: Test NLTK downloads
+      run: |
+        python -c "import nltk; nltk.download('punkt', quiet=True); print('✓ NLTK punkt downloaded')"

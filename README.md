@@ -1,5 +1,9 @@
 # Python Cheatsheet
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/thewaqasgondal/python-cheatsheet/blob/main/CONTRIBUTING.md)
+
 A comprehensive collection of Python code examples and tutorials covering various topics from basic concepts to advanced implementations. This repository serves as a practical reference for Python developers of all skill levels.
 
 ## 📋 Table of Contents
@@ -8,6 +12,7 @@ A comprehensive collection of Python code examples and tutorials covering variou
 - [Repository Structure](#repository-structure)
 - [Installation](#installation)
 - [Examples](#examples)
+  - [Basic Python Concepts](#basic-python-concepts)
   - [Concurrency](#concurrency)
   - [File Operations](#file-operations)
   - [OCR Examples](#ocr-examples)
@@ -22,6 +27,7 @@ A comprehensive collection of Python code examples and tutorials covering variou
 ## 🎯 Overview
 
 This repository contains organized Python examples demonstrating:
+- **Basic Python Concepts**: Data structures, functions, decorators, generators, and context managers
 - **Concurrency**: Threading and multiprocessing implementations
 - **File Operations**: File handling, metadata extraction, and directory management
 - **OCR**: Text extraction from images including multi-language support
@@ -33,27 +39,32 @@ This repository contains organized Python examples demonstrating:
 
 ```
 python-cheatsheet/
-├── concurrency/               # Threading and multiprocessing examples
+├── basic_concepts/              # Fundamental Python concepts
+│   ├── data_structures.py
+│   ├── decorators.py
+│   ├── generators.py
+│   └── README.md
+├── concurrency/                 # Threading and multiprocessing examples
 │   ├── threading_intro.py
 │   └── multiprocessing_intro.py
-├── file_operations/           # File handling and OS operations
+├── file_operations/             # File handling and OS operations
 │   ├── file_analysis.py
 │   └── os_example.py
-├── ocr_examples/              # Optical Character Recognition
+├── ocr_examples/                # Optical Character Recognition
 │   ├── ocr_example.py
 │   ├── urdu_ocr.py
 │   └── table_ext.py
-├── data_processing/           # Audio and video processing
+├── data_processing/             # Audio and video processing
 │   └── yt_audio.py
-├── nlp_examples/              # Natural Language Processing
+├── nlp_examples/                # Natural Language Processing
 │   └── my_nltk/
-├── tensorflow_examples/       # TensorFlow implementations
+├── tensorflow_examples/         # TensorFlow implementations
 │   └── tf.py
-├── example_directory/         # Sample data files
+├── example_directory/           # Sample data files
 │   ├── data.csv
 │   ├── data.json
 │   └── example.txt
-└── images/                    # Sample images for OCR
+└── images/                      # Sample images for OCR
 ```
 
 ## 🚀 Installation
@@ -75,6 +86,51 @@ pip install -r requirements.txt
 - **Linux**: `sudo apt-get install tesseract-ocr`
 
 ## 📚 Examples
+
+### Basic Python Concepts
+
+Fundamental Python programming concepts and data structures.
+
+#### Data Structures
+Comprehensive examples of Python's built-in data structures.
+
+```bash
+python basic_concepts/data_structures.py
+```
+
+**Covers:**
+- Lists: Creation, manipulation, list comprehensions
+- Tuples: Immutability, unpacking, usage patterns
+- Dictionaries: Key-value operations, comprehensions
+- Sets: Unique collections, set operations
+
+#### Decorators
+Function decorators and their practical applications.
+
+```bash
+python basic_concepts/decorators.py
+```
+
+**Features:**
+- Simple decorators
+- Timing and logging decorators
+- Caching decorators
+- Parameterized decorators
+- Class decorators
+
+#### Generators
+Memory-efficient iterators and generator expressions.
+
+```bash
+python basic_concepts/generators.py
+```
+
+**Topics:**
+- Generator functions and yield
+- Generator expressions
+- Memory efficiency comparisons
+- Generator pipelines
+- Advanced generator patterns
 
 ### Concurrency
 

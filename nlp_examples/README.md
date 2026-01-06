@@ -7,10 +7,10 @@ This directory contains NLTK (Natural Language Toolkit) examples for text proces
 The `my_nltk` directory contains various NLP examples:
 
 ### Available Examples:
-- **01_test** - Basic NLTK setup and testing
-- **01_token** - Text tokenization examples
-- **03_my_tok** - Custom tokenizers
-- **04_word_punct_tokenizer** - Word and punctuation tokenization
+- **test_setup.py** - Basic NLTK setup and testing
+- **tokenization.py** - Text tokenization examples
+- **custom_tokenization.py** - Custom tokenizers
+- **word_punct_tokenization.py** - Word and punctuation tokenization
 - **05_named_entity_recognition.py** - Named Entity Recognition (NER)
 
 ## Getting Started
