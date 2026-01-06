@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title mb-0">
+                    <i class="fas fa-edit"></i> {{ legend }}
+                </h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        {{ form.title.label(class="form-label") }}
+                        {{ form.title(class="form-control" + (" is-invalid" if form.title.errors else "")) }}
+                        {% if form.title.errors %}
+                            {% for error in form.title.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.category.label(class="form-label") }}
+                        {{ form.category(class="form-select" + (" is-invalid" if form.category.errors else "")) }}
+                        {% if form.category.errors %}
+                            {% for error in form.category.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.content.label(class="form-label") }}
+                        {{ form.content(class="form-control" + (" is-invalid" if form.content.errors else ""), rows=10) }}
+                        {% if form.content.errors %}
+                            {% for error in form.content.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="form-text">
+                            You can use HTML tags for formatting. Supports basic HTML like &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, etc.
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Post
+                        </button>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="card mt-4" id="preview-section" style="display: none;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-eye"></i> Preview
+                    <button class="btn btn-sm btn-outline-secondary float-end" onclick="togglePreview()">
+                        Hide Preview
+                    </button>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="preview-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+function togglePreview() {
+    const previewSection = document.getElementById('preview-section');
+    const previewContent = document.getElementById('preview-content');
+    const contentTextarea = document.querySelector('[name="content"]');
+
+    if (previewSection.style.display === 'none') {
+        previewSection.style.display = 'block';
+        previewContent.innerHTML = contentTextarea.value.replace(/\n/g, '<br>');
+    } else {
+        previewSection.style.display = 'none';
+    }
+}
+
+// Add preview button to the form
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    const previewBtn = document.createElement('button');
+    previewBtn.type = 'button';
+    previewBtn.className = 'btn btn-outline-info';
+    previewBtn.innerHTML = '<i class="fas fa-eye"></i> Preview';
+    previewBtn.onclick = togglePreview;
+
+    submitBtn.parentNode.insertBefore(previewBtn, submitBtn);
+});
+</script>
+{% endblock %}
+{% endblock %}

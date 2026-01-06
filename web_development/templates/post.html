@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <!-- Main Content -->
+    <div class="col-md-8">
+        <article>
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="card-title mb-0">{{ post.title }}</h1>
+                            <div class="post-meta mt-2">
+                                <span class="me-3">
+                                    <i class="fas fa-user"></i> {{ post.author.username }}
+                                </span>
+                                <span class="me-3">
+                                    <i class="fas fa-calendar"></i> {{ post.created_at | format_datetime }}
+                                </span>
+                                <span class="me-3">
+                                    <i class="fas fa-eye"></i> {{ post.views }} views
+                                </span>
+                                <span class="category-badge badge bg-secondary">
+                                    {{ post.category.title() }}
+                                </span>
+                            </div>
+                        </div>
+                        {% if current_user.is_authenticated and current_user == post.author %}
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('update_post', post_id=post.id) }}">
+                                    <i class="fas fa-edit"></i> Edit Post
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item text-danger" onclick="deletePost()">
+                                    <i class="fas fa-trash"></i> Delete Post
+                                </button></li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="post-content">
+                        {{ post.content | safe }}
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted">
+                    <small>Last updated: {{ post.updated_at | format_datetime }}</small>
+                </div>
+            </div>
+        </article>
+
+        <!-- Comments Section -->
+        <div class="mt-4">
+            <h3>Comments ({{ post.comments | length }})</h3>
+
+            {% if current_user.is_authenticated %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5>Add a Comment</h5>
+                    <form method="post" action="{{ url_for('add_comment', post_id=post.id) }}">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ form.content.label(class="form-label") }}
+                            {{ form.content(class="form-control", rows=3) }}
+                            {% if form.content.errors %}
+                                {% for error in form.content.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-comment"></i> Post Comment
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Display Comments -->
+            {% for comment in post.comments %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center mb-2">
+                                <strong>{{ comment.user.username }}</strong>
+                                <small class="text-muted ms-2">
+                                    {{ comment.created_at | format_datetime }}
+                                </small>
+                            </div>
+                            <p class="mb-0">{{ comment.content }}</p>
+                        </div>
+                        {% if current_user.is_authenticated and current_user == comment.user %}
+                        <button class="btn btn-outline-danger btn-sm" onclick="deleteComment({{ comment.id }})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if not post.comments %}
+            <div class="text-center text-muted mt-4">
+                <i class="fas fa-comments fa-2x mb-2"></i>
+                <p>No comments yet. Be the first to comment!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+        <div class="sidebar">
+            <h4>About the Author</h4>
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-user-circle fa-3x text-secondary"></i>
+                    </div>
+                    <h5>{{ post.author.username }}</h5>
+                    <p class="text-muted">{{ post.author.email }}</p>
+                    <small class="text-muted">
+                        Member since {{ post.author.created_at | format_datetime('%B %Y') }}
+                    </small>
+                </div>
+            </div>
+
+            <h4>Related Posts</h4>
+            <div class="list-group">
+                <!-- This would be populated with actual related posts in a real app -->
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">Sample Related Post</h6>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">This is a sample related post...</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Post Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this post? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" action="{{ url_for('delete_post', post_id=post.id) }}" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+function deletePost() {
+    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    modal.show();
+}
+
+function deleteComment(commentId) {
+    if (confirm('Are you sure you want to delete this comment?')) {
+        // In a real app, this would make an AJAX request to delete the comment
+        alert('Comment deletion would be implemented with AJAX in a real application');
+    }
+}
+</script>
+{% endblock %}
+{% endblock %}

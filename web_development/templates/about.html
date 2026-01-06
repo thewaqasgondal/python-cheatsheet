@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title mb-0">
+                    <i class="fas fa-info-circle"></i> About Flask Blog
+                </h1>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>What is this?</h3>
+                        <p>
+                            This is a comprehensive Flask web development example demonstrating modern web application
+                            patterns and best practices. It serves as both a functional blog application and an educational
+                            resource for learning Flask development.
+                        </p>
+
+                        <h3>Features Demonstrated</h3>
+                        <ul>
+                            <li><strong>User Authentication:</strong> Registration, login, logout with Flask-Login</li>
+                            <li><strong>Database Integration:</strong> SQLAlchemy ORM with relationships</li>
+                            <li><strong>CRUD Operations:</strong> Create, read, update, delete posts and comments</li>
+                            <li><strong>REST API:</strong> JSON API endpoints with proper HTTP methods</li>
+                            <li><strong>Security:</strong> CSRF protection, password hashing, rate limiting</li>
+                            <li><strong>File Uploads:</strong> Secure file handling with validation</li>
+                            <li><strong>Search:</strong> Full-text search across posts</li>
+                            <li><strong>Templates:</strong> Jinja2 templating with inheritance and filters</li>
+                            <li><strong>Forms:</strong> WTForms integration with validation</li>
+                            <li><strong>Middleware:</strong> CORS, rate limiting, error handling</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Technology Stack</h3>
+                        <div class="mb-3">
+                            <h6>Backend</h6>
+                            <ul>
+                                <li>Flask - Web framework</li>
+                                <li>SQLAlchemy - ORM</li>
+                                <li>Flask-Login - Authentication</li>
+                                <li>Flask-WTF - Forms</li>
+                                <li>Flask-Migrate - Database migrations</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6>Frontend</h6>
+                            <ul>
+                                <li>Bootstrap 5 - CSS framework</li>
+                                <li>Font Awesome - Icons</li>
+                                <li>JavaScript - Interactive features</li>
+                                <li>Jinja2 - Templating</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6>Security & Performance</h6>
+                            <ul>
+                                <li>Flask-Limiter - Rate limiting</li>
+                                <li>Flask-CORS - Cross-origin requests</li>
+                                <li>Werkzeug - Security utilities</li>
+                                <li>SQLite - Database (easily replaceable)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Getting Started</h3>
+                        <ol>
+                            <li>Install dependencies: <code>pip install -r requirements.txt</code></li>
+                            <li>Run the application: <code>python flask_blog_app.py</code></li>
+                            <li>Visit <code>http://localhost:5000</code> in your browser</li>
+                            <li>Register a new account or use demo credentials</li>
+                            <li>Create posts, add comments, explore the API</li>
+                        </ol>
+
+                        <h5>Demo Credentials</h5>
+                        <p><strong>Username:</strong> demo<br><strong>Password:</strong> demo123</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>API Endpoints</h3>
+                        <ul>
+                            <li><code>GET /api/posts</code> - List all posts</li>
+                            <li><code>POST /api/posts</code> - Create new post (authenticated)</li>
+                            <li><code>GET /api/posts/&lt;id&gt;</code> - Get single post</li>
+                            <li><code>POST /api/posts/&lt;id&gt;/comments</code> - Add comment</li>
+                        </ul>
+
+                        <h5>Learning Resources</h5>
+                        <ul>
+                            <li><a href="https://flask.palletsprojects.com/" target="_blank">Flask Documentation</a></li>
+                            <li><a href="https://sqlalchemy.org/" target="_blank">SQLAlchemy Documentation</a></li>
+                            <li><a href="https://wtforms.readthedocs.io/" target="_blank">WTForms Documentation</a></li>
+                            <li><a href="https://getbootstrap.com/" target="_blank">Bootstrap Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

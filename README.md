@@ -21,6 +21,11 @@ A comprehensive collection of Python code examples and tutorials covering variou
   - [Text Processing](#text-processing)
   - [Web Scraping](#web-scraping)
   - [TensorFlow Examples](#tensorflow-examples)
+- [CLI Tools](#cli-tools)
+- [Data Visualization](#data-visualization)
+- [Performance Profiling](#performance-profiling)
+- [GUI Development](#gui-development)
+- [Web Development](#web-development)
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -38,6 +43,11 @@ This repository contains organized Python examples demonstrating:
 - **Text Processing**: Regular expressions, string manipulation, and text analysis
 - **Web Scraping**: HTTP requests, HTML parsing, and API integration
 - **Machine Learning**: TensorFlow basics and implementations
+- **CLI Tools**: Command-line interface development with argparse and Click
+- **Data Visualization**: Plotting with matplotlib and seaborn
+- **Performance Profiling**: CPU and memory profiling techniques
+- **GUI Development**: Desktop applications with tkinter
+- **Web Development**: Full-stack web applications with Flask
 
 ## 📁 Repository Structure
 
@@ -73,6 +83,23 @@ python-cheatsheet/
 │   └── README.md
 ├── tensorflow_examples/         # TensorFlow implementations
 │   └── tf.py
+├── cli_tools/                   # ✨ NEW: Command-line interface development
+│   ├── argparse_basics.py
+│   ├── click_example.py
+│   └── README.md
+├── data_visualization/          # ✨ NEW: Data plotting and visualization
+│   ├── matplotlib_seaborn.py
+│   └── README.md
+├── performance_profiling/       # ✨ NEW: CPU and memory profiling
+│   ├── cpu_memory_profiling.py
+│   └── README.md
+├── gui_development/             # ✨ NEW: Desktop GUI applications
+│   ├── tkinter_examples.py
+│   └── README.md
+├── web_development/             # ✨ NEW: Full-stack web applications
+│   ├── flask_blog_app.py
+│   ├── templates/
+│   └── README.md
 ├── example_directory/           # Sample data files
 │   ├── data.csv
 │   ├── data.json
@@ -317,6 +344,114 @@ Basic TensorFlow operations and setup verification.
 python tensorflow_examples/tf.py
 ```
 
+### CLI Tools
+
+Command-line interface development with argparse and Click.
+
+#### argparse Basics
+Comprehensive argument parsing with Python's standard library.
+
+```bash
+python cli_tools/argparse_basics.py
+```
+
+**Covers:**
+- Basic argument parsing with positional and optional arguments
+- File path validation and custom types
+- Mutually exclusive argument groups
+- Subcommands with subparsers
+- Custom actions and validation
+- Configuration file integration
+
+#### Click Library
+Modern CLI development with the Click framework.
+
+```bash
+python cli_tools/click_example.py
+```
+
+**Covers:**
+- Command groups and subcommands
+- Argument and option decorators
+- File path handling and validation
+- Progress bars and user interaction
+- Configuration management
+- Error handling and user feedback
+
+### Data Visualization
+
+Data plotting and visualization with matplotlib and seaborn.
+
+```bash
+python data_visualization/matplotlib_seaborn.py
+```
+
+**Covers:**
+- Basic matplotlib plots (line, scatter, bar, histogram)
+- Advanced charts (3D plots, pie charts, box plots, violin plots)
+- Seaborn statistical visualizations
+- Statistical plotting (regression, distributions, correlations)
+- Interactive-style plots with annotations
+- Custom styling and theming
+
+### Performance Profiling
+
+CPU and memory profiling for optimization.
+
+```bash
+python performance_profiling/cpu_memory_profiling.py
+```
+
+**Covers:**
+- cProfile for detailed CPU analysis
+- timeit for precise timing measurements
+- Memory profiling with tracemalloc and psutil
+- Profiling decorators for functions
+- Line-by-line profiling techniques
+- Optimization techniques and best practices
+
+### GUI Development
+
+Desktop GUI applications with tkinter.
+
+```bash
+python gui_development/tkinter_examples.py
+```
+
+**Covers:**
+- Basic widgets (labels, buttons, entries, text areas)
+- Advanced widgets (treeview, notebook tabs, progress bars, canvas)
+- Menu systems and keyboard shortcuts
+- Layout management (pack, grid, place)
+- Event handling and callbacks
+- Complete applications (forms, editors, calculators)
+
+### Web Development
+
+Full-stack web applications with Flask framework.
+
+```bash
+cd web_development
+python flask_blog_app.py
+```
+
+**Features:**
+- User authentication and authorization (Flask-Login)
+- Database integration (SQLAlchemy ORM)
+- REST API endpoints with rate limiting
+- CRUD operations for blog posts and comments
+- File uploads with security validation
+- Search functionality and pagination
+- Responsive UI with Bootstrap 5
+- Form validation (WTForms)
+- Template inheritance and filters
+- CORS support for API access
+- Database migrations (Flask-Migrate)
+
+**Demo Credentials:**
+- Username: `demo`
+- Password: `demo123`
+
 ## 📦 Requirements
 
 Main dependencies include:
@@ -329,6 +464,14 @@ Main dependencies include:
 - `transformers` - NLP models
 - `tensorflow` - Machine learning
 - `nltk` - Natural Language Processing
+- `Flask` - Web framework
+- `Flask-SQLAlchemy` - Database ORM
+- `Flask-Login` - User authentication
+- `Flask-WTF` - Form handling
+- `WTForms` - Form validation
+- `matplotlib` - Data visualization
+- `seaborn` - Statistical plotting
+- `psutil` - System monitoring
 
 See [requirements.txt](requirements.txt) for complete list.
 
