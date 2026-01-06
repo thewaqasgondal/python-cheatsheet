@@ -17,5 +17,13 @@ transformers>=4.30.0
 # Machine Learning
 tensorflow>=2.13.0
 
+# Web Scraping
+requests>=2.25.0
+beautifulsoup4>=4.9.0
+lxml>=4.6.0
+
+# Async HTTP
+aiohttp>=3.8.0
+
 # Additional Utilities
 numpy>=1.24.0

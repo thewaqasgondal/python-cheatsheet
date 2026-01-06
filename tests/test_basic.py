@@ -78,11 +78,16 @@ def test_example_files_exist():
         'basic_concepts/data_structures.py',
         'basic_concepts/decorators.py',
         'basic_concepts/generators.py',
+        'basic_concepts/async_await.py',
+        'basic_concepts/context_managers.py',
+        'basic_concepts/exception_handling.py',
         'concurrency/threading_intro.py',
         'concurrency/multiprocessing_intro.py',
         'file_operations/file_analysis.py',
         'ocr_examples/ocr_example.py',
         'nlp_examples/my_nltk/tokenization.py',
+        'text_processing/regular_expressions.py',
+        'web_scraping/basic_scraping.py',
         'tensorflow_examples/tf.py'
     ]
 

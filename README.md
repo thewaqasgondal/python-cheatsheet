@@ -18,6 +18,8 @@ A comprehensive collection of Python code examples and tutorials covering variou
   - [OCR Examples](#ocr-examples)
   - [Data Processing](#data-processing)
   - [Natural Language Processing](#natural-language-processing)
+  - [Text Processing](#text-processing)
+  - [Web Scraping](#web-scraping)
   - [TensorFlow Examples](#tensorflow-examples)
 - [Requirements](#requirements)
 - [Usage](#usage)
@@ -27,12 +29,14 @@ A comprehensive collection of Python code examples and tutorials covering variou
 ## 🎯 Overview
 
 This repository contains organized Python examples demonstrating:
-- **Basic Python Concepts**: Data structures, functions, decorators, generators, and context managers
+- **Basic Python Concepts**: Data structures, decorators, generators, async/await, context managers, exception handling
 - **Concurrency**: Threading and multiprocessing implementations
 - **File Operations**: File handling, metadata extraction, and directory management
 - **OCR**: Text extraction from images including multi-language support
 - **Data Processing**: Audio processing and YouTube content extraction
 - **NLP**: Natural Language Processing with NLTK
+- **Text Processing**: Regular expressions, string manipulation, and text analysis
+- **Web Scraping**: HTTP requests, HTML parsing, and API integration
 - **Machine Learning**: TensorFlow basics and implementations
 
 ## 📁 Repository Structure
@@ -43,6 +47,9 @@ python-cheatsheet/
 │   ├── data_structures.py
 │   ├── decorators.py
 │   ├── generators.py
+│   ├── async_await.py           # ✨ NEW: Asynchronous programming
+│   ├── context_managers.py      # ✨ NEW: Context managers
+│   ├── exception_handling.py    # ✨ NEW: Error handling patterns
 │   └── README.md
 ├── concurrency/                 # Threading and multiprocessing examples
 │   ├── threading_intro.py
@@ -58,6 +65,12 @@ python-cheatsheet/
 │   └── yt_audio.py
 ├── nlp_examples/                # Natural Language Processing
 │   └── my_nltk/
+├── text_processing/             # ✨ NEW: Text manipulation and regex
+│   ├── regular_expressions.py
+│   └── README.md
+├── web_scraping/                # ✨ NEW: HTTP requests and web scraping
+│   ├── basic_scraping.py
+│   └── README.md
 ├── tensorflow_examples/         # TensorFlow implementations
 │   └── tf.py
 ├── example_directory/           # Sample data files
@@ -118,19 +131,47 @@ python basic_concepts/decorators.py
 - Parameterized decorators
 - Class decorators
 
-#### Generators
-Memory-efficient iterators and generator expressions.
+#### Context Managers
+Custom context managers and resource management patterns.
 
 ```bash
-python basic_concepts/generators.py
+python basic_concepts/context_managers.py
+```
+
+**Features:**
+- Custom context managers with `__enter__` and `__exit__`
+- Context manager decorators
+- File handling with automatic cleanup
+- Database connection simulation
+- Thread synchronization
+
+#### Exception Handling
+Comprehensive error handling and custom exception patterns.
+
+```bash
+python basic_concepts/exception_handling.py
 ```
 
 **Topics:**
-- Generator functions and yield
-- Generator expressions
-- Memory efficiency comparisons
-- Generator pipelines
-- Advanced generator patterns
+- Try-except-else-finally patterns
+- Custom exceptions and inheritance
+- Exception chaining
+- Banking example with rollback
+- Logging exceptions
+
+#### Async/Await
+Asynchronous programming with coroutines and event loops.
+
+```bash
+python basic_concepts/async_await.py
+```
+
+**Features:**
+- Async functions and await syntax
+- Concurrent task execution
+- Producer-consumer patterns
+- HTTP requests with aiohttp
+- Async comprehensions
 
 ### Concurrency
 
@@ -233,6 +274,40 @@ Examples using NLTK for text processing tasks:
 - Named Entity Recognition (NER)
 
 Navigate to `nlp_examples/my_nltk/` to explore various NLTK implementations.
+
+### Text Processing
+
+#### Regular Expressions
+Pattern matching, validation, and text manipulation with regex.
+
+```bash
+python text_processing/regular_expressions.py
+```
+
+**Features:**
+- Basic pattern matching and compilation
+- Groups and capturing
+- Substitution and replacement
+- Data validation (emails, phones, etc.)
+- Log parsing and HTML extraction
+- Advanced patterns (lookahead, lookbehind)
+
+### Web Scraping
+
+#### Basic Web Scraping
+HTTP requests, HTML parsing, and data extraction.
+
+```bash
+python web_scraping/basic_scraping.py
+```
+
+**Topics:**
+- HTTP methods and headers
+- Error handling and timeouts
+- HTML parsing with BeautifulSoup
+- API data extraction
+- Form submission
+- Rate limiting and respectful scraping
 
 ### TensorFlow Examples
 
